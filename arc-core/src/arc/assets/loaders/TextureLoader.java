@@ -40,7 +40,9 @@ public class TextureLoader extends AsynchronousAssetLoader<Texture, TextureLoade
             info.texture = parameter.texture;
         }
         if(!info.data.isPrepared()) info.data.prepare();
-        Log.infoTag("Textures", "Async: " + fileName + " in " + Time.timeSinceNanos(start)/(float)Time.nanosPerMilli + "ms");
+        if(OS.hasProp("debug")){
+            Log.debug("[Textures] Async: " + fileName + " in " + Time.timeSinceNanos(start)/(float)Time.nanosPerMilli + "ms");
+        }
     }
 
     @Override
